@@ -1,0 +1,31 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+       			<%= link_to '戻る',new_friend_path,class:"header_button btn btn-primary" %>
+       		</div>
+             <div class="float_left">
+             	 <h1>友達追加</h1>
+             </div>
+             <div class="float_right">
+             	<%= link_to 'ホーム',root_path,class:"btn btn-primary header_button" %>
+             </div>
+       </div>
+</div>
+<div class="body form_sheet">
+	<h1>この方ですか？</h1>
+	<div class="col-xs-12 myprofile">
+		<%= image_tag @friend_info.avatar,class:"thumnail_image float_left"%>
+		<h2 class="float_left name"><%= @friend_info.nickname %></h2>
+	</div>
+  <div class="clear_box">
+  </div>
+	<%= form_for @friends do |f| %>
+		<div class="col-lg-6 input_text">
+                  <%= f.hidden_field :user_id%>
+                  <%= f.hidden_field :mail_address,:value => @friend_info.email%>
+        </div>
+        <div class="form-group">
+	        <%= f.submit "友達追加", class: "btn btn-primary withripple" %>
+	    </div>
+	<%end%>
+</div>

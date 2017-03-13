@@ -1,0 +1,39 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class:"float_left link_button btn btn-primary header_button"%>
+       		</div>
+             <div class="float_left">
+             	 <h1>友達一覧</h1>
+             </div>
+             <div class="float_right">
+                <%= link_to "友達追加",new_friend_path,class:"link_button btn btn-primary header_button" %>
+             </div>
+       </div>
+</div>
+<div class="box clearfix">
+	<div class="col-xs-12 namebar">
+		<h2>My Profile</h2>
+	</div>
+	<div class="col-xs-12 myprofile">
+			<%= image_tag current_user.avatar,class:"thumnail_image float_left"%>
+			<h2 class="float_left name"><%= current_user.nickname %></h2>
+      <div class="button_area float_right user_button_area">
+        <%= link_to "設定", edit_user_path(current_user),class:"link_button btn btn-primary float_right button" %>
+        <%= link_to 'マイページ',user_path(current_user),class:"btn btn-primary float_right button"%>
+      </div>
+	</div>
+	<div class="col-xs-12 friendsbar">
+		<h2>Friends Profile</h2>
+	</div>
+  <% @friends.each do |user| %>
+      <%= render partial: 'user',locals:{user:user,talk:@talk}%>
+  <%end%>
+</div>
+<div class="footer clear_fixed">
+       <ul>
+              <li>友達</li>
+              <li><%= link_to 'トーク',talks_path %></li>
+              <li><%= link_to 'タイムライン',timelines_path%></li>
+       </ul>
+</div>

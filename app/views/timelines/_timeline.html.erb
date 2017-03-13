@@ -1,0 +1,12 @@
+<div class="timeline_sheet clearfix">
+	<%= image_tag timeline.user.avatar ,class:"thumnail_image float_left"%>
+	<h1><%= timeline.user.nickname%></h1>
+	<time><%= time_ago_in_words timeline.created_at %>　ago</time>
+	<div class="text_box">
+		<%= simple_format(timeline.text)%>
+	</div>
+	<% if current_user.id == timeline.user_id %>
+		<%= link_to '削除',timeline_path(timeline),class:"btn btn-primary float_right margin_button",method: :delete %>
+		<%= link_to '編集',edit_timeline_path(timeline),class:"btn btn-primary float_right margin_button"%>
+	<%end%>
+</div>

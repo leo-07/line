@@ -1,0 +1,53 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+            <%= link_to '戻る',talks_path,class:"link_button btn btn-primary header_button"%>
+          </div>
+            <% if @talk.friend.id == current_user.id%>
+              <h1 class="float_left"><%= @talk.user.nickname %></h1>
+            <%else%>
+              <h1 class="float_left"><%= @talk.friend.nickname %></h1>
+            <%end%>
+            <div class="float_right">
+              <% unless @friend_is %>
+                <%= form_for @friends do |f| %>
+                    <div class="col-lg-6">
+                        <%= f.hidden_field :user_id%>
+                        <%= f.hidden_field :mail_address,:value => @talk.user.email%>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "友達追加", class: "btn btn-primary header_button" %>
+                    </div>
+                <%end%>
+              <%end%>
+            </div>
+       </div>
+</div>
+<div class="overflow">
+	<div class="talk_sinery">
+		<% @comments.each do |comment| %>
+          <%=render partial:"hukidasi",locals:{comment:comment}%>
+    <%end%>
+	</div>
+</div>
+<div class="footer clear_fixed">
+       <div class="container">
+         		<%= form_for @comment_create do |f| %>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <%= f.label :コメント%>
+                      <%= f.text_area :comment, placeholder: "", class: "form-control float_left" ,:size => "40x10"%>
+                    </div>
+                    <div>
+                        <%= f.hidden_field :user_id %>
+                    </div>
+                    <div>
+                        <%= f.hidden_field :talk_id,:value => @talk.id %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit "送信", class: "btn btn-primary withripple input_text" %>
+                  </div>
+            <% end %>
+       </div>
+</div>

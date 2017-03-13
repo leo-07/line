@@ -1,0 +1,21 @@
+<div class="header_fixed">
+       <div class="header">
+       	<div class="clear_box">
+                  <%= link_to '戻る',timelines_path,class:"header_button btn btn-primary"%>
+            </div>
+             <div class="float_left">
+             	 <h1>投稿画面</h1>
+             </div>
+       </div>
+</div>
+<div class="form_sheet container">
+      <%= form_for(@timeline) do |f| %>
+            <div class="col-lg-11 input_text">
+                  <%= f.text_area :text, placeholder: "今の気持ちをつぶやこう", class: "form-control text_area" ,:size => "60x5"%>
+            </div>
+            <%= f.hidden_field :user_id%>
+            <div class="actions input_text">
+                  <%= f.submit "投稿" ,class:"form-control"%>
+            </div>
+      <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+       		</div>
+             <div class="float_left">
+             	 <h1>タイムライン</h1>
+             </div>
+             <div class="float_right">
+                <%= link_to "投稿",new_timeline_path,class:"header_button btn btn-primary" %>
+             </div>
+       </div>
+</div>
+<div class="body box">
+  <% @timelines.each do |timeline| %>
+      <%= render partial:'timeline',locals:{timeline:timeline}%>
+  <%end%>
+</div>
+<div class="footer clear_fixed">
+       <ul>
+              <li><%= link_to '友達',friends_path,method: :get%></li>
+              <li><%= link_to 'トーク',talks_path %></li>
+              <li>タイムライン</li>
+       </ul>
+  </div>

@@ -1,0 +1,18 @@
+<div class="header_fixed clear_fixed">
+       <div class="header">
+              <h1>トーク一覧</h1>
+       </div>
+</div>
+<div class="body box">
+  <% @talks.each do |talk| %>
+        <%= render partial: 'talks',locals:{talk:talk,}%>
+  <%end%>
+</div>
+
+<div class="footer clear_fixed">
+       <ul>
+              <li><%= link_to '友達',friends_path,method: :get%></li>
+              <li>トーク</li>
+              <li><%=link_to 'タイムライン',timelines_path %></li>
+       </ul>
+</div>

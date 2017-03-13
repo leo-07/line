@@ -1,0 +1,28 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+            <%= link_to '戻る',friends_path,class:"float_left header_button btn btn-primary"%>
+       		</div>
+             <div class="float_left">
+             	 <h1>友達追加</h1>
+             </div>
+       </div>
+</div>
+<div class="form_sheet body container">
+    <div class="clear_box">
+        </div>
+        <h1>友達を探す</h1>
+        <%= form_tag(result_friends_path) do |f| %>
+              <div class="form-group">
+                <div class="field input_text">
+                  <%= text_field_tag :mail_address,"",class:"form-control " ,placeholder:"ここに友達のアドレスを入力してください"%>
+                </div>
+              </div>
+              <div class="clear_box">
+              </div>
+              <div class="form-group">
+                <%= submit_tag "検索", class: "btn btn-primary withripple input_text" %>
+              </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="header_fixed">
+       <div class="header">
+                  <div class="clear_box">
+            <%= link_to "戻る",root_path,class:"float_left header_button btn btn-primary"%>
+                  </div>
+             <div class="float_left">
+                   <h1>マイページ</h1>
+             </div>
+       </div>
+</div>
+<div class="add_head">
+      <h1>My Profile</h1>
+</div>
+<div class="myprofile">
+      <%= image_tag current_user.avatar,class:"thumnail_image float_left"%>
+                  <h2 class="float_left name"><%= current_user.nickname %></h2>
+      <div class="float_right">
+          <%= link_to "設定", edit_user_path(current_user),class:"header_button btn btn-primary" %>
+      </div>
+</div>
+<div class="body box">
+  <% @timelines.each do |timeline| %>
+      <%= render partial:'timelines/timeline',locals:{timeline:timeline}%>
+  <%end%>
+</div>

@@ -1,0 +1,23 @@
+<div class="header_fixed">
+       <div class="header">
+       		<div class="clear_box">
+                        <%= link_to '戻る',timelines_path,class:"header_button btn btn-primary"%>
+       		</div>
+             <div class="float_left">
+             	 <h1>タイムライン編集</h1>
+             </div>
+       </div>
+</div>
+<div class="form_sheet body container">
+    <div class="clear_box">
+        </div>
+        <h1>編集</h1>
+        <%= form_for(@timeline) do |f| %>
+            <%= f.text_area :text, value:@timeline.text, class: "form-control" ,:size => "40x10"%>
+            <div class="form-group padding_10">
+            <div class="clear_box">
+            </div>
+            <%= f.submit "送信", class: "btn btn-primary withripple" %>
+       <%end%>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<% if comment.user_id == current_user.id %>
+	<div class="hukidasi_box">
+		<div class="user_hukidasi">
+			<%= simple_format(comment.comment) %>
+		</div>
+	</div>
+<% else %>
+	<div class="hukidasi_box">
+		<div class="question_image">
+			<% if @talk.friend.id == current_user.id%>
+				<%= image_tag @talk.user.avatar,class:"thumnail_image"%>
+			<%else%>
+				<%= image_tag @talk.friend.avatar,class:"thumnail_image"%>
+			<%end%>
+		</div>
+		<div class="hukidasi">
+			<%= simple_format(comment.comment) %>
+		</div>
+	</div>
+<%end%>
+
+
+
